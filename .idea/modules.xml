@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Howmuch-EGPAY-bridge.iml" filepath="$PROJECT_DIR$/.idea/modules/Howmuch-EGPAY-bridge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Howmuch-EGPAY-bridge.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Howmuch-EGPAY-bridge.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/howmuch-egpay-bridge/Howmuch-EGPAY-bridge.howmuch-egpay-bridge.iml" filepath="$PROJECT_DIR$/.idea/modules/howmuch-egpay-bridge/Howmuch-EGPAY-bridge.howmuch-egpay-bridge.iml" />
+    </modules>
+  </component>
+</project>
