@@ -9,26 +9,27 @@ import java.security.NoSuchAlgorithmException
 
 class IntegrationBridge(private val context: Context) {
 
-    fun openHowmuchPOS(email: String, secretKey: String) {
-        openApp(md5(email + secretKey), "com.arkhitech.howmuchshopadminapp")
+    fun openHowmuchPOS(email: String, secretKey: String, actionKey: String) {
+        openApp(md5(email + secretKey), "com.arkhitech.howmuchshopadminapp",actionKey)
     }
 
-    fun openHowmuchNewOrder(email: String, secretKey: String) {
-        openApp(md5(email + secretKey), "com.arkhitech.howmuchshopadminapp")
+    fun openHowmuchNewOrder(email: String, secretKey: String, actionKey: String) {
+        openApp(md5(email + secretKey), "com.arkhitech.howmuchshopadminapp",actionKey)
     }
 
-    fun openFoodnerdPOS(email: String, secretKey: String) {
-        openApp(md5(email + secretKey), "menumonkey.orderdock")
+    fun openFoodnerdPOS(email: String, secretKey: String, actionKey: String) {
+        openApp(md5(email + secretKey), "menumonkey.orderdock",actionKey)
     }
 
-    fun openFoodnerdNewOrder(email: String, secretKey: String) {
-        openApp(md5(email + secretKey), "menumonkey.orderdock")
+    fun openFoodnerdNewOrder(email: String, secretKey: String, actionKey: String) {
+        openApp(md5(email + secretKey), "menumonkey.orderdock",actionKey)
     }
 
-    fun openApp(encryptedEmail: String, launchAppID: String) {
+    fun openApp(encryptedEmail: String, launchAppID: String, actionKey: String) {
         try {
             val i: Intent? = context.packageManager.getLaunchIntentForPackage(launchAppID)
             i?.putExtra("encrypted_email", encryptedEmail)
+            i?.putExtra("action_key", actionKey)
             context.startActivity(i)
         } catch (e: PackageManager.NameNotFoundException) {
             // TODO Auto-generated catch block
