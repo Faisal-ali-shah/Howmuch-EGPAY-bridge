@@ -60,7 +60,7 @@ fun encryptToAES(cipherText: String, secret: String): String {
     val aesCBC = Cipher.getInstance("AES/CBC/PKCS5Padding")
     aesCBC.init(Cipher.DECRYPT_MODE, key, iv)
 
-    return ""
+    return encrypted.toString()
 }
 
 
