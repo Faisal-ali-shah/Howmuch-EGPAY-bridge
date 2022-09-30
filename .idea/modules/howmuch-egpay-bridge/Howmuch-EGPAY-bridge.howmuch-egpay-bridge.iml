@@ -60,6 +60,7 @@
       <sourceFolder url="file://$MODULE_DIR$/../../../howmuch-egpay-bridge/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../../howmuch-egpay-bridge/src/main/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/../../../howmuch-egpay-bridge/src/test/java" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../howmuch-egpay-bridge/build/generated/ap_generated_sources/debug/out" isTestSource="false" generated="true" />
       <excludeFolder url="file://$MODULE_DIR$/../../../howmuch-egpay-bridge/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../howmuch-egpay-bridge/build" />
     </content>
