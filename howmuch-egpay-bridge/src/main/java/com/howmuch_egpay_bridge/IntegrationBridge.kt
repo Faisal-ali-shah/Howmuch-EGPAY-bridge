@@ -15,6 +15,10 @@ object IntegrationBridge {
             "com.arkhitech.howmuchshopadminapp",
             _DashbordScreen,
         )
+
+
+
+
     }
 
     fun openHowmuchNewOrder(context: Context, email: String, secretKey: String) {
