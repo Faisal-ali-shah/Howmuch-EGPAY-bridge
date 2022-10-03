@@ -2,6 +2,8 @@ package com.howmuch_egpay_bridge
 
 import android.content.Context
 import android.content.pm.PackageManager
+import java.math.BigInteger
+import java.security.MessageDigest
 
 
 object IntegrationBridge {
@@ -11,7 +13,8 @@ object IntegrationBridge {
     fun openHowmuchPOS(context: Context, email: String, secretKey: String) {
         openApp(
             context,
-            AESUtils.encrypt(email, secretKey.toByteArray()),
+            email,
+            (email+secretKey).md5(),
             "com.arkhitech.howmuchshopadminapp",
             _DashbordScreen,
         )
@@ -24,7 +27,8 @@ object IntegrationBridge {
     fun openHowmuchNewOrder(context: Context, email: String, secretKey: String) {
         openApp(
             context,
-            AESUtils.encrypt(email, secretKey.toByteArray()),
+            email,
+            (email+secretKey).md5(),
             "com.arkhitech.howmuchshopadminapp",
             _DashbordScreen
         )
@@ -33,7 +37,8 @@ object IntegrationBridge {
     fun openFoodnerdPOS(context: Context, email: String, secretKey: String) {
         openApp(
             context,
-            AESUtils.encrypt(email, secretKey.toByteArray()),
+            email,
+            (email+secretKey).md5(),
             "menumonkey.orderdock",
             _NewOrderScreen
         )
@@ -42,13 +47,14 @@ object IntegrationBridge {
     fun openFoodnerdNewOrder(context: Context, email: String, secretKey: String) {
         openApp(
             context,
-            AESUtils.encrypt(email, secretKey.toByteArray()),
+            email,
+            (email+secretKey).md5(),
             "menumonkey.orderdock",
             _NewOrderScreen
         )
     }
 
-    fun openApp(context: Context, encryptedEmail: String, launchAppID: String, actionKey: String) {
+    private fun openApp(context: Context,email:String, encryptedEmail: String, launchAppID: String, actionKey: String) {
         try {
             val pm: PackageManager = context.getPackageManager()
             val i = pm.getLaunchIntentForPackage(launchAppID)
@@ -56,9 +62,17 @@ object IntegrationBridge {
 
             i?.putExtra("encrypted_email", encryptedEmail)
             i?.putExtra("screen", actionKey)
+            i?.putExtra("email", email)
+
             context.startActivity(i)
         } catch (e: PackageManager.NameNotFoundException) {
             // TODO Auto-generated catch block
         }
+    }
+
+
+    fun String.md5(): String {
+        val md = MessageDigest.getInstance("MD5")
+        return BigInteger(1, md.digest(toByteArray())).toString(16).padStart(32, '0')
     }
 }
